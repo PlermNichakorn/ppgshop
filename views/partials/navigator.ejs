@@ -1,0 +1,285 @@
+<style>
+    /* Navigator */
+    #Navigator {
+      background-color: #145124;
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .navbar-brand {
+      margin-right: auto;
+      margin-left: 3px;
+      margin-top: 0px;
+      padding: 0px;
+    }
+  
+    .navbar-nav {
+      justify-content: center;
+      align-items: center;
+      margin-right: auto;
+    }
+  
+    .navbar-nav .nav-item {
+      margin-right: 2%;
+    }
+  
+    .navbar-nav .nav-link {
+      font-family: "Montserrat", sans-serif;
+      color: white;
+      font-size: 16px;
+      font-weight: 200;
+      text-decoration: none;
+      margin-right: 80px;
+      margin-left: 80px;
+    }
+  
+    .navbar-nav .nav-link:hover {
+      border-bottom: 2px solid white;
+    }
+  
+    .login {
+      font-size: 16px;
+      background-color: #f7ae40;
+      border-radius: 10px;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      color: white;
+      margin-left: auto;
+      margin-right: 40px;
+    }
+  
+    @media screen and (max-width: 768px) {
+      .login {
+        font-size: 12px;
+        /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+        padding: 6px 12px;
+      }
+    }
+  
+    .login:hover {
+      background-color: #c6831e;
+    }
+  
+    .dropdown-menu {
+      color: white;
+      background-color: #8181818c;
+      border-bottom: 1px solid #818181;
+    }
+  
+    .navbar-toggler {
+      font-size: 0.75rem;
+      /* ปรับขนาดเล็กลง เช่น 0.75rem */
+      color: #ffffff;
+      /* เปลี่ยนสีข้อความเป็นสีขาว */
+    }
+  
+    /* สีของ Navbar Toggler เมื่อ hover */
+    .navbar-toggler:hover {
+      background-color: white;
+      /* เปลี่ยนสีพื้นหลังเมื่อ hover เป็นสีน้ำเงินเข้ม */
+      border-color: white;
+      /* เปลี่ยนสีเส้นขอบเมื่อ hover เป็นสีน้ำเงินเข้ม */
+    }
+  
+    .navbar-collapse {
+      width: 100%;
+      display: flex;
+    }
+  
+    @media screen and (max-width: 768px) {
+      .navbar-brand img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  
+    .cart-icon-container {
+      position: relative;
+      display: inline-block;
+      /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
+    }
+  
+    .cart-count {
+      position: absolute;
+      top: -7px;
+      /* ปรับตำแหน่งตามต้องการ */
+      right: -10px;
+      /* ปรับตำแหน่งตามต้องการ */
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 6px;
+      font-size: 10px;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .nameUser{
+        margin-right: 20px;
+        margin-top: 10px;
+        font-weight: bold;
+      
+    }
+
+  </style>
+  
+  <section id="Navigator">
+    <div class="container-fluid">
+      <nav
+        class="navbar navbar-expand-lg navbar-light"
+        style="margin: 0% 3.5% 0% 0%"
+      >
+        <div style="width: 20%">
+          <a class="navbar-brand" href="/home">
+            <img
+              src="/image/newlogo.png"
+              alt="Home"
+              width="100px"
+              height="100px"
+            />
+          </a>
+        </div>
+        <button
+          style="margin: 0% 0% 0% 25%"
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/home">PRODUCTS</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                CATEGORIES
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="/fruit">Fruits & Vegetables</a>
+                </li>
+                <li><a class="dropdown-item" href="/meat">Meat & Seafood</a></li>
+                <li><a class="dropdown-item" href="/beverage">Beverage</a></li>
+                <li><a class="dropdown-item" href="/household">Household</a></li>
+              </ul>
+            </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">CONTACT</a>
+            </li>
+          </ul>
+        </div>
+        <div id="login"></div>
+        <div>
+          <a
+            class="nav-item nav-link cart-icon-container"
+            href="/productList"
+            style="margin-right: 2%"
+          >
+            <i class="fas fa-shopping-cart" style="color: white"></i>
+            <div class="cart-count">0</div>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </section>
+  
+  <script>
+    let userIds
+    document.addEventListener("DOMContentLoaded", function () {
+      // Function to get a cookie by name
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(";").shift();
+      }
+  
+      // Get the userName from the cookie
+      const userName = getCookie("user_name");
+      userIds = getCookie("user_id");
+  
+      // Get the login button element
+      const loginButton = document.getElementById("login");
+      updateCartCount();
+  
+      console.log(userName);
+  
+      // Check if the userName cookie exists
+      if (userName) {
+        // If userName exists, update the login button's content to show the username
+        loginButton.innerHTML = `<div style="display: flex; gap: 10px; ">
+                      <span class="nameUser" style="color: #f7ae40;">${userName}</span>
+                      <button class="login" type="button" aria-expanded="false" onclick="logout()">Logout</button>
+                  </div>`;
+      } else {
+        // If userName does not exist, ensure the login button is displayed
+        loginButton.innerHTML = `<button class="login" type="button" aria-expanded="false" onclick="window.location.href='/'">Login</button>`;
+      }
+    });
+  
+    function deleteAllCookies() {
+      const cookies = document.cookie.split(";");
+  
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+      }
+    }
+  
+    function logout() {
+      fetch(`http://localhost:3003/logout`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Delete all cookies
+          deleteAllCookies();
+  
+          window.location.href = "/";
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+      // Navigate to the logout endpoint
+    }
+  
+    function updateCartCount() {
+      fetch(`http://localhost:3003/cart/${userIds}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success cart:", data);
+          const cartCountElement = document.querySelector(".cart-count");
+          cartCountElement.textContent = data.length;
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  </script>
+  

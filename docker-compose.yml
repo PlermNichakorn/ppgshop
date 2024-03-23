@@ -1,0 +1,14 @@
+version: '3.3'
+
+networks:
+  ppg:
+    driver: bridge
+
+services:
+  frontend:
+    container_name: ppg-frontend
+    image: plermnich/ppgshop:latest
+    networks:
+      - skibidi
+    ports:
+      - "3000:3000"

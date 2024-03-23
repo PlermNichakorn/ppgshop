@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Summary</title>
+
+    <link rel="stylesheet" href="/css2/Business/billSummary.css">
+
+    <%- include('../partials/link')  %>
+</head>
+<body>
+    <%- include('../partials/navBusiness')  %>
+
+    <section id="feature">
+        <p>BILL SUMMARY</p>      
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Bill ID</th>
+                        <th>Date</th>
+                        <th>Number of <br>items</th>
+                        <th>Bill Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>000100</td>
+                        <td>20/01/2024</td>
+                        <td>1</td>
+                        <td>฿188.00</td>
+                    </tr>
+                    <tr>
+                        <td>000101</td>
+                        <td>20/01/2024</td>
+                        <td>2</td>
+                        <td>150</td>
+                    </tr>
+                    <!-- and so on... -->
+                </tbody>
+            </table>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // เลือกทุกแถวใน tbody
+            var rows = document.querySelectorAll("#feature .styled-table tbody tr");
+            // วนลูปผ่านแต่ละแถว
+            rows.forEach(function(row) {
+                // เพิ่มการฟังก์ชันคลิก
+                row.addEventListener("click", function() {
+                    // ดึงค่าของหมายเลขบิล (คอลัมน์แรก) จากแถวนั้น ๆ
+                    var billId = row.querySelector("td:first-child").textContent;
+                    // สร้าง URL ที่ต้องการไป
+                    var destination = "/Business/html/billDetail.html?id=" + billId; // เปลี่ยนเส้นทาง URL ตามที่ต้องการ
+                    // เปลี่ยนหน้าโดยใช้ URL ที่สร้างขึ้น
+                    window.location.href = destination;
+                });
+            });
+        });
+    </script>
+    
+    <%- include('../partials/script')  %>
+    
+</body>
+</html>

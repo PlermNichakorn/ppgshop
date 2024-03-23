@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="/css2/style_login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+ 
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jockey+One&display=swap"
+      rel="stylesheet"
+    />
+ 
+    <link
+      href="https://fonts.googleapis.com/css2?family=Calistoga&family=Jockey+One&family=Luckiest+Guy&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 left-content">
+          <!-- left content -->
+          <div class="happy">
+            <h1>Where there is good food,</h1>
+            <h1>there is happiness :</h1>
+          </div>
+          <img class="grocery" src="/image/grocery2.png" />
+          <img class="fish" src="/image/fish.png" />
+          <img class="bread" src="/image/bread.png" />
+          <img class="tomato" src="/image/tomato.png" />
+          <img class="meat" src="/image/meat copy.png" />
+          <img class="juice" src="/image/orange.png" />
+          <img class="pumpkin" src="/image/pumpkin.png" />
+          <img class="milk" src="/image/milk.png" />
+        </div>
+ 
+        <div class="col-md-6 right-content">
+          <!-- right content -->
+          <p class="top">
+            New Customer?
+            <span id="register"
+              ><a href="/register">Register Now</a></span
+            >
+          </p>
+          <br />
+          <h2>Login</h2>
+          <img src="image/ppg black.png" alt="" />
+          <p class="Username"><b>Username</b></p>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Please insert your username"
+          />
+          <p class="Password"><b>Password</b></p>
+          <input
+            type="text"
+            id="password"
+            name="password"
+            placeholder="Please insert password"
+          />
+          <br /><br />
+          <button type="submit" id="loginButton">Login</button>
+        </div>
+      </div>
+    </div>
+ 
+    <script>
+      document.getElementById("username").addEventListener("input",handleInput);
+      document.getElementById("password").addEventListener("input",handleInput);
+ 
+      function handleInput(){
+          const username = document.getElementById("username").value;
+          const password = document.getElementById('password').value;
+          const loginButton = document.getElementById('loginButton');
+ 
+          //completed fill username and password
+          if (username.trim() !== '' && password.trim() !== '') {
+                  loginButton.style.backgroundColor = 'red';
+                  loginButton.style.color = 'white';
+                  loginButton.disabled = false; // can click
+              } else {
+                  loginButton.style.backgroundColor = '#d9d9d9';
+                  loginButton.style.color = '#818181';
+                  loginButton.disabled = true; // can not click
+              }
+          }
+ 
+      // Define URLs for redirection
+    //   const homeForBusinessUrl = "./html2/Business/HomeForBusiness.html";
+    //   const homeForCustomerUrl = "./html2/Customer/HomeForCustomer.html";
+ 
+      document
+        .getElementById("loginButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent the default form submission behavior
+ 
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+ 
+          // Check if username and password are not empty
+          if (username.trim() !== "" && password.trim() !== "") {
+            // Prepare the data to be sent to the server
+            
+            const userData = {
+              username: username,
+              password: password,
+            };
+ 
+            // Send a POST request to the server
+            fetch("http://localhost:3003/login", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(userData),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                if (data.message === "Logged in successfully") {
+                  document.cookie = `user_id=${data.data.user_id}; path=/`;
+                  document.cookie = `user_name=${data.data.username}; path=/`;
+                  // Redirect based on role using the defined variables
+                  if (data.data.role === "business") {
+                    window.location.href = '/homeBusiness'
+                  } else if (data.data.role === "individual") {
+                    window.location.href = '/home';
+                  }
+                } else {
+                  alert("Invalid credentials.");
+                }
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+                alert("An error occurred. Please try again.");
+              });
+              document.getElementById("loginButton").style.backgroundColor = "red";
+      document.getElementById("loginButton").style.color = "white";
+          } else {
+            alert("Please fill in both username and password fields.");
+          }
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

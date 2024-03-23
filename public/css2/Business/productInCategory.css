@@ -1,0 +1,173 @@
+#feature{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.productbox, .product2box{
+    width: 100%;
+    background-color: antiquewhite;
+    border-radius: 15px;
+    padding-top: 15px;  
+    padding-left: 20px;
+    padding-bottom: 50px;
+    margin:5% auto;
+    position: relative;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 1em;
+    
+}
+.product2box{
+    margin-top: 20px;
+}
+.editbutton{
+    position: absolute;
+    bottom: 5px;
+    text-decoration: underline red;
+}
+.deletebutton{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.savebutton{
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+}
+.savebutton a{
+    padding: 5px 50px;
+    border-radius: 5px;
+    color: rgb(26, 25, 25);
+    background-color: rgb(160, 156, 156);
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+.savebutton a:hover {
+    background-color: orange; /* เปลี่ยนพื้นหลังเป็นสีส้มเมื่อโฮเวอร์ */
+    color: white; /* เปลี่ยนสีตัวอักษรเป็นสีขาวเมื่อโฮเวอร์ */
+}
+.addnewbox{
+    width: 90%;
+    background-color: antiquewhite;
+    border-radius: 15px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Jockey One", sans-serif;
+    font-size: 1.5em;
+}
+.addnewbox img{
+    margin-top: 10px; 
+    border: none; 
+    width: 100px;
+}
+.addnewbox a{
+    border: none;
+    background: none;
+    padding: 0; 
+}
+.addnewbox p{  
+    margin-bottom: 50px;
+}
+@media (max-width: 667px) {
+    .productinfo{
+        font-size: 0.7em;
+        margin-left: 15px;
+    }
+    .editbutton, .deletebutton{
+        font-size: 0.7em;
+    }
+    .productimage{
+        width: 60px;
+    }
+    .addnewbox img{
+        width: 70px;     
+    }
+    .addnewbox p{
+        font-size: 0.8em;
+        margin-bottom: 30px;
+    }
+}
+
+/* Confirm box Part */
+.confirmbox{
+    background-color: rgba(167, 163, 163, 0.593);
+    width: 30%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 500px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed; /* ทำให้อยู่ตรงกลางของหน้าเพจ */
+    opacity: 0;
+    z-index: 1;
+}
+.confirmbox p{
+    font-family: "Jockey One", sans-serif;
+    font-size: 1.5em;
+    z-index: 100;
+}
+.continuebutton{
+    position: absolute;
+    bottom: 20px;
+    right: 80px;
+    font-family: "Jockey One", sans-serif;
+    background-color: rgb(61, 40, 248);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+.canclebutton{
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    font-family: "Jockey One", sans-serif;
+    background-color: rgb(248, 40, 40);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    font-size: 0.8em;
+}
+@media (max-width: 667px) {
+    .confirmbox{
+      width: 40%;
+      height: 20%;
+      margin-top: 50px;
+      margin-bottom: 190px;
+    }
+    .confirmbox p{
+        font-size: 0.5em;
+     }
+     .continuebutton, .canclebutton{
+        font-size: 0.5em;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        padding-left: 10px;
+        padding-right: 10px;
+        right: 5px;
+     }
+     .continuebutton{
+        right: 50px;
+     }
+    }
+
+

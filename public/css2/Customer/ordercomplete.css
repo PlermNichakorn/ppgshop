@@ -1,0 +1,243 @@
+/* Navigator */
+#Navigator {
+  background-color: #145124; 
+  width: 100%;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  margin-right: auto; 
+  margin-left: 3px;
+  margin-top: 0px;
+  padding: 0px;
+}
+
+.navbar-nav {
+  justify-content: center;
+  align-items: center;
+  margin-right: auto ;
+}
+
+.navbar-nav .nav-item {
+  margin-right: 2%;
+}
+
+.navbar-nav .nav-link {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 16px;
+  font-weight: 200;
+  text-decoration: none;
+  margin-right: 80px;
+  margin-left: 80px;
+}
+
+.navbar-nav .nav-link:hover {
+  border-bottom: 2px solid white; 
+}
+
+.login {
+  font-size: 16px;
+  background-color: #F7AE40; 
+  border-radius: 10px;
+  padding: 10px 20px; 
+  border: none; 
+  cursor: pointer; 
+  color: white;
+  margin-left: 5%;
+  margin-right: 3%;
+}
+@media screen and (max-width: 768px) {
+  .login {
+    font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+    padding: 6px 12px; 
+  }
+}
+
+.login:hover {
+  background-color: #c6831e; 
+}
+.dropdown-menu {
+  color: white;
+  background-color:#8181818c ;
+  border-bottom: 1px solid #818181;
+
+}
+.navbar-toggler {
+  font-size: 0.75rem; /* ปรับขนาดเล็กลง เช่น 0.75rem */
+  color: #ffffff; /* เปลี่ยนสีข้อความเป็นสีขาว */
+}
+
+/* สีของ Navbar Toggler เมื่อ hover */
+.navbar-toggler:hover {
+  background-color: white; /* เปลี่ยนสีพื้นหลังเมื่อ hover เป็นสีน้ำเงินเข้ม */
+  border-color: white; /* เปลี่ยนสีเส้นขอบเมื่อ hover เป็นสีน้ำเงินเข้ม */
+}
+.navbar-collapse {
+  width: 100%;
+  display: flex;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar-brand img {
+    width: 100%; 
+    height: 100%;
+  }
+}
+
+.complete {
+    border: 1px solid antiquewhite;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: antiquewhite;
+    width: 100%;
+    text-align: center;
+    margin: 30px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.complete img {
+    border-radius: 5px;
+    width: 100%; 
+    opacity: 0.8; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); 
+}
+.thx{
+    margin-top: 20px;
+    font-size: 2em;
+    color: rgba(1, 44, 151, 0.695);
+    font-family: "GFS Didot", serif;
+}
+.text{
+    font-family: "GFS Didot", serif;
+}
+@media (max-width: 667px) {
+  .thx {
+      font-size: 1.5em;
+  }
+}
+
+.continuebutton{
+    margin-top: 20px;
+    font-family: "Jockey One", sans-serif;
+}
+
+/* Step progress bar */
+.stepper-wrapper {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  font-family: "Jockey One", sans-serif;
+}
+
+.step-name {
+  font-family: "Jockey One", sans-serif;
+}
+
+.stepper-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: -50%;
+  z-index: 2;
+}
+
+.stepper-item::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 2;
+}
+
+.stepper-item .step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-bottom: 6px;
+}
+
+.stepper-item.active {
+  font-weight: bold;
+}
+
+.stepper-item.active .step-counter {
+  background-color: red;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+}
+
+.stepper-item.completed .step-counter{
+  background-color: green;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"><path d="M6.97 11.97 3.47 8.47a.25.25 0 0 1 0-.34l.66-.66a.25.25 0 0 1 .35 0L7 10.55l4.52-4.52a.25.25 0 0 1 .35 0l.66.66a.25.25 0 0 1 0 .34L8.53 11.97a.25.25 0 0 1-.36 0z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+}
+
+.stepper-item.inactive .step-counter {
+  background-color: #ccc;
+}
+
+.stepper-item.inactive::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 3;
+}
+
+.stepper-item:first-child::before {
+  content: none;
+}
+
+.stepper-item:last-child::after {
+  content: none;
+}
+
+.cart-icon-container {
+  position: relative;
+  display: inline-block; /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
+}
+
+.cart-count {
+  position: absolute;
+  top: -7px; /* ปรับตำแหน่งตามต้องการ */
+  right: -10px; /* ปรับตำแหน่งตามต้องการ */
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 6px;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

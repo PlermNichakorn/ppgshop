@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empty cart Page</title>
+
+    <title>Checkout Page</title>
+   
+    <link rel="stylesheet" href="/css2/Customer/cartempty.css" />
+
+    <%- include('../partials/link')  %>
+
+</head>
+<body>
+  <%- include('../partials/navigator')  %>
+
+  <div class="stepper-wrapper">
+    <div class="stepper-item active">
+      <div class="step-counter">1</div>
+      <div class="step-name">Product list & Order details</div>
+    </div>
+    <div class="stepper-item incompleted">
+      <div class="step-counter">2</div>
+      <div class="step-name">Payment & Order Remarks</div>
+    </div>
+    <div class="stepper-item incompleted">
+      <div class="step-counter">3</div>
+      <div class="step-name">Order Complete</div>
+    </div>
+  </div>
+
+    <section id="feature" class="container-lg">
+        <div class="row">
+            <!-- Content for the left side -->
+            <div class="col-md-8">
+                <div class="cartempty">
+                    <div class="item">
+                        <div>
+                            <img class="cartEmpty" src="/image/emptycart.png" alt="" style="width: 100px;">
+                         </div>
+                         <h5 class="text-center" style="color: gray;">Your shopping cart is empty</h1>
+                             <div class="continuebutton">
+                                 <a href="/home" class="btn btn-warning" style="color: white;"><b>Continue shopping</b></a>
+                             </div>
+                    </div>
+                </div>
+            </div>
+              
+
+        <!-- Content for the right side -->
+      <div class="col-md-4">
+        <div class="summary">
+          <div class="card mb-4">
+            <div class="card-body">
+              <strong>Summary</strong>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                  Subtotal
+                  <span>0.00Bath</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                  Total discount
+                  <span>0.00Bath</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                  Delivery fee
+                  <span>0.00Bath</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+                  <div>
+                    <strong>Grand Total</strong>
+                  </div>
+                  <span><strong>Bath</strong></span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+    </section>
+
+    <%- include('../partials/footer')  %>
+    
+    <%- include('../partials/script')  %>
+</body>
+</html>

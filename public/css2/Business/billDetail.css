@@ -1,0 +1,52 @@
+body{
+    background-color: rgba(250, 235, 215, 0.745);
+}
+#feature{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Josefin Sans", sans-serif;
+    margin-top: 90px;
+}
+.bill{
+    width: 30%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: white;
+    padding-bottom: 80px;
+}
+.topbillinfo{
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+.billtable{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.middlebillinfo{
+    border-bottom:1px solid gray ;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.totalbox{
+    width: 45%;
+    height: 15%;
+   background-color: rgba(206, 196, 196, 0.742);
+   /* padding: 10px; */
+   margin-top: 15px;
+   margin-left: 200px;
+   margin-bottom: 30px;
+   padding-top: 2px;
+}
+@media (max-width: 667px) {
+    .bill{
+        width: 90%;
+    }
+    .totalbox{
+        margin-left: 170px;
+    }
+}

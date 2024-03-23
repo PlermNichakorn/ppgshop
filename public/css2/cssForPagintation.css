@@ -1,0 +1,28 @@
+.pagination {
+  display: inline-block;
+}
+
+.pagination li {
+  display: inline;
+  margin: 0 5px;
+}
+
+.pagination li a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.pagination li a:hover {
+  background-color: #ddd;
+}
+
+.pagination .active a {
+  background-color: #145124;
+  color: white;
+}
+
+#pagination {
+  display: flex;
+  justify-content: center;
+}

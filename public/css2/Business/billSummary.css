@@ -1,0 +1,38 @@
+#feature{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 90px; 
+}
+#feature p{
+    font-family: "Josefin Sans", sans-serif;
+}
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 80%;
+    border: 1px solid #b1afaf;
+    font-family: "Josefin Sans", sans-serif;
+}
+.styled-table thead tr {
+    background-color: #989e9d;
+    color: #ffffff;
+    text-align: center;
+    height: 50px;
+}
+.styled-table td {
+    text-align: center;
+    background-color: antiquewhite;
+}
+.styled-table tbody td {
+    border-bottom: 1px solid #b1afaf;
+    height: 60px;
+}
+@media (max-width: 667px) {
+    .styled-table{
+        font-size: 0.7em;
+    }
+}

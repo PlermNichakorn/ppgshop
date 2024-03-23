@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Page</title>
+    <%- include('../partials/link') %>
+    <link rel="stylesheet" href="/css2/Customer/contact.css">
+</head>
+
+<body>
+    <%- include('../partials/navigator') %>
+
+        <section class="feature">
+            <div class="top">
+                <p style="font-size: 1.8em;">Get in touch with us for</p>
+                <p class="moreinfo" style="font-size: 1.8em;">more information</p>
+                <p style="color: gray;">If you have a question, we're here for you</p>
+            </div>
+            <div class="middle">
+                <div class="contactinfo">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="contact-message">
+                                <label for="leavemessage" style="color: rgb(99, 97, 97);">
+                                    <img src="/image/leavemessage.png" alt="K+" width="70" height="70">
+                                    <a href="mailto:ppggroceryshop@gmail.com"
+                                        style="color: rgb(99, 97, 97);">Email-ppggroceryshop@gmail.com</a>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="contact-telephone">
+                                <label for="leavemessage" style="color: rgb(99, 97, 97);">
+                                    <img src="/image/telephone.png" alt="K+" width="30" height="30">
+                                    <a href="tel:1234" style="color: rgb(99, 97, 97);">1234</a> (09.00-21.00)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="contact-address">
+                                <label for="leavemessage" style="color: rgb(99, 97, 97);">
+                                    <img src="/image/pinlocation.png" alt="K+" width="30" height="30">
+                                    Soi Sukhothai 5, Suthep Subdistrict, Muang Chiang Mai District, Chiang Mai 50200
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="moremiddle">
+                    <div class="row">
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="contactus" style="font-size: 1.2em;">
+                                <p>Contact us</p>
+                            </div>
+                            <div class="form-contact">
+                                <form>
+                                    <input name="name" type="text" class="feedback-input" placeholder="Name" />
+                                    <input name="email" type="text" class="feedback-input" placeholder="Email" />
+                                    <textarea name="text" class="feedback-input" placeholder="Comment"></textarea>
+                                    <input type="submit" value="SUBMIT" />
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-6">
+                            <div id="google-map">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="bottom">
+                <div class="follow">
+                    <p class="follwus" style="font-size: 1.2em;">Follow us</p>
+                    <div class="icon">
+                        <div class="row">
+                            <div class="col-4 col-sm-4 col-lg-4">
+                                <div class="social-icon facebook">
+                                    <a href="#" class="icon"></a>
+                                </div>
+                                <p style="color:rgb(99, 97, 97);">PPG store</p>
+                            </div>
+                            <div class="col-4 col-sm-4 col-lg-4">
+                                <div class="social-icon instagram">
+                                    <a href="#" class="icon"></a>
+                                </div>
+                                <p style="color:rgb(99, 97, 97);">PPG store</p>
+                            </div>
+                            <div class="col-4 col-sm-4 col-lg-4">
+                                <div class="social-icon twitter">
+                                    <a href="#" class="icon"></a>
+                                </div>
+                                <p style="color:rgb(99, 97, 97);">PPG store</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+</body>
+<script>
+    // Initialize and display the map
+    function initMap() {   
+    const markers = [
+        {
+            locationName: 'PPG Grocery Store',
+            lat:18.801469338649543,
+            lng: 98.95036028465701,
+            address: 'Soi Sukhothai 5,<br> Suthep Subdistrict, <br> Muang Chiang Mai District, <br>Chiang Mai 50200'
+        }
+        
+    ];
+ 
+    const centerMap={ lat: 18.7982068, lng: 98.9606071}
+ 
+    const mapOptions = {
+        center: centerMap,
+        zoom: 10,
+        disableDefaultUI: true
+ 
+    }
+     const map = new google.maps.Map(document.getElementById('google-map'), mapOptions)
+     
+     const infoWindow = new google.maps.InfoWindow({
+        minWidth: 200,
+        maxWidth: 200
+     })
+ 
+ 
+     const marker = new google.maps.Marker({
+        position: { lat: markers[0]['lat'], lng: markers[0]['lng']},
+        map: map
+     })
+ 
+     function createInfoWindow() {
+        const infoWindowContent = `
+            <div class="feh-content">
+                <p><b>${markers[0]['locationName']}</b><p>
+                <address><p>${markers[0]['address']}</p></address>
+            </div>`;
+        google.maps.event.addListener(marker, 'click', function(){
+            infoWindow.setContent(infoWindowContent)
+            infoWindow.open(map, marker)
+        })
+    }
+    
+     createInfoWindow()
+}
+</script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAtnoW08E0mREGZpEuRBwWTrbs0q7HWNQ&callback=initMap"></script>
+
+<%- include('../partials/script') %>
+
+</html>

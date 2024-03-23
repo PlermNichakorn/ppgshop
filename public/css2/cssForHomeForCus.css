@@ -1,0 +1,347 @@
+/* Home For Customer*/
+.page {
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+  height: 30vh; /* takes up the full height of the viewport */
+  width: 100%;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers the flex items (the text and image) horizontally */
+  justify-content: center; /* centers the flex items (the text and image) vertically */
+  background-color: #54b20c3d;
+}
+
+.LittleBoy {
+  width: 50%;
+  height: auto;
+  margin-top: 2%;
+}
+/* ปรับขนาด เมื่อจอเล็กลง*/
+@media screen and (max-width: 768px) {
+  .LittleBoy {
+  width: 60%;
+  height: auto;
+  }
+}
+
+.bottom {
+  flex: 1; /* takes up any remaining space */
+}
+
+.TextForHead {
+  margin: 0% 0% 4% 15%;
+  font-size: 2.5em;
+  padding-left: 28%;
+  font-weight: bold;
+}
+.TextForHeadPri {
+  margin: 0% 0% 2% 15%;
+  padding-left: 28%;
+  font-size: 19px;
+}
+/* ปรับปุ่ม เมื่อจอเล็กลง*/
+@media screen and (max-width: 768px) {
+  .TextForHead {
+      font-size: 15px;
+  }
+  .TextForHeadPri {
+      font-size: 9px;
+  }
+}
+
+#carouselExample .carousel-control-prev,
+#carouselExample .carousel-control-next{
+top: 50%;
+transform: translateY(-50%);
+background-color: rgba(0, 91, 5, 0.734);
+position: absolute;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+margin-left: 0%;
+
+}
+
+#boxesCarousel1 .carousel-control-prev,
+#boxesCarousel1 .carousel-control-next {
+top: 50%;
+transform: translateY(-50%);
+background-color: rgba(0, 91, 5, 0.734);
+position: absolute;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+
+}
+.container #carouselExample{
+  margin-bottom: 50px;
+}
+.container #boxesCarousel1{
+  margin-bottom: 40px;
+}
+
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item .col-md-2 {
+      flex: 0 0 16%; /* เปลี่ยนเป็น 48% เพื่อให้มีระยะห่างเล็กน้อย */
+      max-width: 48%; /* เปลี่ยนเป็น 48% เพื่อให้มีระยะห่างเล็กน้อย */
+      margin: 0% 0% 6% 0%; /* เพิ่ม margin เล็กน้อยด้านซ้ายและขวา */
+  }
+ 
+  .list-unstyled.custom-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: center; /* ให้รูปสี่เหลี่ยมอยู่ตรงกลางของหน้าจอ */
+  }
+}
+
+@media (max-width: 991px) {
+  /* Small screens */
+  .text-overlay p {
+      font-size: 45px; /* ปรับขนาดเล็กลงเมื่อหน้าจอเล็กลง */
+  }
+}
+
+
+/* Custom CSS for Carousel */
+.topPromotion img {
+  height: 200px;
+  width: 100%;
+  border-radius: 20px;
+  margin: 2% 0% 2% 0%;
+}
+/* CSS for adjusting image size based on screen size */
+@media (max-width: 767px) {
+  .topPromotion img {
+      width: 100%; /* ปรับความกว้างของรูปให้เล็กลงเมื่อหน้าจอเล็กลง */
+      height: 80px; /* รักษาสัดส่วนของรูป */
+  }
+}
+
+#carouselExample1 .carousel-control-prev,
+#carouselExample1 .carousel-control-next{
+top: 50%;
+transform: translateY(-50%);
+background-color: rgba(0, 91, 5, 0.734);
+position: absolute;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+
+}
+
+#boxesCarousel2 .carousel-control-prev,
+#boxesCarousel2 .carousel-control-next {
+top: 50%;
+transform: translateY(-50%);
+background-color: rgba(0, 91, 5, 0.734);
+position: absolute;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+
+}
+
+#boxesCarousel3 .carousel-control-prev,
+#boxesCarousel3 .carousel-control-next {
+top: 50%;
+transform: translateY(-50%);
+background-color: rgba(0, 91, 5, 0.734);
+position: absolute;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+
+}
+/* CSS for reducing the size of carousel control buttons on smaller screens */
+@media (max-width: 767px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+      /* Set the font size to be smaller */
+      font-size: 0.1rem;
+      /* Set the padding to be smaller */
+      padding: 0.25rem 0.5rem;
+  }
+
+  #carouselExample1 .carousel-control-prev,
+  #boxesCarousel2 .carousel-control-next,
+  #boxesCarousel2 .carousel-control-prev,
+  #boxesCarousel3 .carousel-control-next,
+  #boxesCarousel3 .carousel-control-prev {
+
+      width: 40px;
+      height: 40px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .carousel-item .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+  }
+
+  .carousel-item .row .col-md-3 {
+      flex-basis: 90%;
+      max-width: 90%;
+      /* margin: 2% 15% 2% 52%;  */
+      margin: 5px auto;
+     
+  }
+
+  .rectangle1 , .rectangle2 {
+      width: 250px;
+      height: 270px;
+ 
+      border-radius: 20px;
+  }
+
+}
+
+
+/* footer */
+#footer {
+  background-color: #818181;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 0%;
+}
+.list-unstyled.custom-list li a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.cart-icon-container {
+  position: relative;
+  display: inline-block; /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
+}
+
+.cart-count {
+  position: absolute;
+  top: -7px; /* ปรับตำแหน่งตามต้องการ */
+  right: -10px; /* ปรับตำแหน่งตามต้องการ */
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 6px;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart {
+font-size: 14px;
+background-color: red;
+padding: 6px 20px;
+border: none;
+cursor: pointer;
+color: white;
+display: block;
+margin: 0 auto;
+margin-top: -10px;
+}
+   /* Container for the product */
+   .box {
+      background-color: antiquewhite;
+      height: 320px;
+      width: auto;
+      margin-bottom: 50px;
+      border-radius: 20px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      display: block;
+    }
+
+    .productbox {
+      align-items: center;
+      text-align: center;
+    }
+
+    .productlist {
+      margin-left: 60px;
+    }
+
+    /* Image container */
+    .img-container {
+      text-align: center;
+      display: block;
+      margin-left: 30%;
+    }
+
+    /* Image */
+    .imageFoecate {
+      object-fit: cover;
+      /* Ensures the image covers the container without stretching */
+      width: 60%;
+      /* Adjust the width as needed */
+      height: 150px;
+      /* Adjust the height as needed */
+      padding-top: 10px;
+      display: block;
+      /* Ensures the image is centered */
+    }
+
+    @media screen and (max-width: 768px) {
+      /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+      .box {
+        height: 100%;
+        /* ปรับความสูงให้เล็กลง */
+        width: 100%;
+       
+      }
+
+      .imageFoecate {
+        width: 80%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+        height: 120px;
+        margin-right: 5%;
+        /* ปรับขนาดของรูปภาพให้เล็กลง */
+       
+        align-items: center;  
+      }
+
+      .descript,
+      span {
+        font-size: 15px;
+        /* ปรับขนาดข้อความให้เล็กลง */
+        margin: auto;
+        /* ปรับระยะห่างของข้อความ */
+      }
+
+      p {
+        margin-bottom: 0%;
+      }
+
+      .cart {
+        font-size: 13px;
+        /* ปรับขนาดของปุ่มให้เล็กลง */
+        padding: 4px 10px;
+        /* ปรับขนาดของปุ่มให้เล็กลง */
+        margin-top:10px;
+        /* ปรับระยะห่างของปุ่ม */
+      }
+
+      #productList {
+        margin-right: 5%;
+      }
+      .cart {
+        font-size: 14px;
+        background-color: red;
+        padding: 6px 20px;
+        border: none;
+        cursor: pointer;
+        color: white;
+        display: block;
+        margin: 0 auto;
+        margin-top: -10px;
+      }
+    }

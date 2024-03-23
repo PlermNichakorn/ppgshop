@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Information Page</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css2/Customer/style_outlineInfo.css" />
+
+    <%- include('../partials/link') %>
+  </head>
+
+  <body>
+    <%- include('../partials/navigator') %>
+    <section id="info">
+      <div class="container">
+        <!-- First Box -->
+        <div class="row">
+          <div class="col-md-12">
+            <!-- Content of the first box goes here -->
+            <div id="box1" class="box">
+              <!-- Left side with image -->
+              <div id="leftBox1" class="left-side">
+                <img id="productImage" src="" />
+              </div>
+              <!-- Right side with information -->
+              <div id="rightBox1" class="right-side">
+                <h1
+                  id="productName"
+                  style="font-family: 'Josefin Sans', sans-serif"
+                ></h1>
+                <p id="productPrice"></p>
+                <div class="row">
+                  <div class="col quantity-counter">
+                    <button id="decrement">-</button>
+                    <input type="text" id="quantity" value="0" readonly />
+                    <button id="increment">+</button>
+                    <button id="addCart">ADD TO CART</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second Box -->
+        <div class="row">
+          <div class="col-md-12">
+            <div id="box2" class="box">
+              <h2>Product Information</h2>
+              <hr />
+              <br />
+              <ul id="productInfoList">
+                <!-- Product information will be dynamically added here -->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include('../partials/footer') %>
+    <script>
+      let userId;
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productID = urlParams.get("product_ID");
+
+        if (productID) {
+          fetchProductDetails(productID);
+        }
+        function getCookie(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+        // Usage
+        userId = getCookie("user_id");
+
+        const incrementBtn = document.getElementById("increment");
+        const decrementBtn = document.getElementById("decrement");
+        const quantityInput = document.getElementById("quantity");
+        const addToCartBtn = document.getElementById("addCart"); // Get the "ADD TO CART" button
+
+        // Add event listeners to the increment and decrement buttons
+        incrementBtn.addEventListener("click", function () {
+          let quantity = parseInt(quantityInput.value);
+          quantity++;
+          quantityInput.value = quantity;
+        });
+
+        decrementBtn.addEventListener("click", function () {
+          let quantity = parseInt(quantityInput.value);
+          if (quantity > 0) {
+            quantity--;
+            quantityInput.value = quantity;
+          }
+        });
+
+        // Add event listener to the "ADD TO CART" button
+        addToCartBtn.addEventListener("click", function () {
+          const quantity = parseInt(quantityInput.value);
+          if (quantity > 0) {
+            addToCart(productID, quantity); // Call the addToCart function with the product ID and the quantity
+          }
+        });
+      });
+
+      function addToCart(productId, amount) {
+        // ตรวจสอบว่าสินค้านี้มีอยู่ในตะกร้าหรือไม่
+        console.log(`Product ID: ${productId} added to cart.`);
+
+        const productData = {
+          product_id: Number(productId),
+          user_id: Number(userId),
+          amount: Number(amount),
+        };
+
+        fetch(`http://localhost:3003/cart`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(productData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success product:", data);
+            updateCartCount(); // อัปเดตจำนวนสินค้าในตะกร้า
+          })
+          .catch((error) => {
+            console.log("Error:", error);
+          });
+      }
+
+      function updateCartCount() {
+        fetch(`http://localhost:3003/cart/${userId}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success cart:", data);
+            const cartCountElement = document.querySelector(".cart-count");
+            cartCountElement.textContent = data.length;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+
+      function fetchProductDetails(productID) {
+        fetch(`http://localhost:3003/product-id/${productID}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const product = data[0]; // Assuming the API returns an array with a single product object
+            document.getElementById("productImage").src = product.imagesrc;
+            document.getElementById("productName").textContent =
+              product.product_Name;
+            document.getElementById(
+              "productPrice"
+            ).textContent = `฿${product.price}`;
+
+            // Update product information list
+            const productInfoList = document.getElementById("productInfoList");
+            productInfoList.innerHTML = ""; // Clear existing list items
+            // Object.entries(product).forEach(([key, value]) => {
+            //   if (key !== 'imagesrc' && key !== 'product_Name' && key !== 'price') {
+            //     const listItem = document.createElement('li');
+            //     listItem.textContent = `${key}: ${value}`;
+            //     productInfoList.appendChild(listItem);
+            //   }
+            // });
+            const listItem = document.createElement("li");
+            listItem.textContent = `${product.description}`;
+            productInfoList.appendChild(listItem);
+          })
+          .catch((error) => {
+            console.error("Error fetching product details:", error);
+          });
+      }
+    </script>
+
+    <%- include('../partials/script') %>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Seller</title>
+
+    <link rel="stylesheet" href="/css2/Business/bestSeller.css">
+
+    <%- include('../partials/link')  %>
+</head>
+<body>
+    <%- include('../partials/navBusiness')  %>
+
+    <section id="feature">
+        <p>BEST SELLER</p>      
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Sales Count</th>
+                        <th>Price</th>
+                        <th>Total Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="" class="img-fluid rounded-3"
+                            style="width: 120px;" alt="picture">
+                            000-100-0001
+                        </td>
+                        <td>Special Royal Project Strawberries</td>
+                        <td>139.00</td>
+                        <td>139.00</td>
+                        <td>3475.00</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="" class="img-fluid rounded-3"
+                            style="width: 120px;" alt="picture">
+                            000-200-0001
+                        </td>
+                        <td>Mont Fleur Mineral Water 1.5ltr. Pack6</td>
+                        <td>16</td>
+                        <td>108.00</td>
+                        <td>1728.00</td>
+                    </tr>
+                    <!-- and so on... -->
+                </tbody>
+            </table>
+    </section>
+    
+    <%- include('../partials/script')  %>
+</body>
+</html>

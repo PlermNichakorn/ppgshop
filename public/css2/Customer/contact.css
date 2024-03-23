@@ -1,0 +1,333 @@
+/* Navigator */
+#Navigator {
+    background-color: #145124; 
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .navbar-brand {
+    margin-right: auto; 
+    margin-left: 3px;
+    margin-top: 0px;
+    padding: 0px;
+  }
+  
+  .navbar-nav {
+    justify-content: center;
+    align-items: center;
+    margin-right: auto ;
+  }
+  
+  .navbar-nav .nav-item {
+    margin-right: 2%;
+  }
+  
+  .navbar-nav .nav-link {
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    font-size: 16px;
+    font-weight: 200;
+    text-decoration: none;
+    margin-right: 80px;
+    margin-left: 80px;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    border-bottom: 2px solid white; 
+  }
+  
+  .login {
+    font-size: 16px;
+    background-color: #F7AE40; 
+    border-radius: 10px;
+    padding: 10px 20px; 
+    border: none; 
+    cursor: pointer; 
+    color: white;
+    margin-left: 5%;
+    margin-right: 3%;
+  }
+  @media screen and (max-width: 768px) {
+    .login {
+      font-size: 12px; /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+      padding: 6px 12px; 
+    }
+  }
+  
+  .login:hover {
+    background-color: #c6831e; 
+  }
+  .dropdown-menu {
+    color: white;
+    background-color:#8181818c ;
+    border-bottom: 1px solid #818181;
+  
+  }
+  .navbar-toggler {
+    font-size: 0.75rem; /* ปรับขนาดเล็กลง เช่น 0.75rem */
+    color: #ffffff; /* เปลี่ยนสีข้อความเป็นสีขาว */
+  }
+  
+  /* สีของ Navbar Toggler เมื่อ hover */
+  .navbar-toggler:hover {
+    background-color: white; /* เปลี่ยนสีพื้นหลังเมื่อ hover เป็นสีน้ำเงินเข้ม */
+    border-color: white; /* เปลี่ยนสีเส้นขอบเมื่อ hover เป็นสีน้ำเงินเข้ม */
+  }
+  .navbar-collapse {
+    width: 100%;
+    display: flex;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .navbar-brand img {
+      width: 100%; 
+      height: 100%;
+    }
+  }
+
+.feature{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+}
+
+/* top */
+.top{
+    padding-bottom: 30px;
+    font-family: "Josefin Sans", sans-serif; 
+}
+.moreinfo{
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+/* //////////////////////// */
+
+/* middle */
+.contactinfo{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* ทำให้กล่องยืดเต็มพื้นที่ในแนวแกนแนวตั้ง */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Josefin Sans", sans-serif; 
+}
+.contact-message{
+    font-size: 1em;
+    margin-left: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    background-color: antiquewhite;
+    padding-top: 8px;
+}
+@media (max-width: 667px) {
+    .contact-message{     
+        font-size: 0.8em;
+    }
+}
+.contact-telephone, .contact-address{
+    font-size: 1em;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    background-color: antiquewhite;
+}
+.contact-address{
+    text-align: left;
+    font-size: 0.9em; 
+    padding-top: 15px;
+    padding-left: 10px; 
+}
+.contact-telephone{
+   padding-top: 25px;
+   padding-bottom: 25px;
+}
+.contact-form{
+    width: 70%;  
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto;
+    align-self: center;
+}
+.form-group{
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+/* Map API */
+#google-map{
+    border: 1px solid gray;
+    width: 400px;
+    height: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;   
+}
+@media screen and (max-width: 667px) {
+    #google-map{
+        width: 250px; 
+        height: 250px; 
+        align-self: center;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+}
+.feh-content *{
+    font-family: "Josefin Sans", sans-serif;
+}
+/* Send Contact */
+.contactus{
+    margin-top: 20px;
+    padding-bottom: 10px;
+    font-family: "Josefin Sans", sans-serif;
+}
+form {    
+    width: 100%;
+    margin-top: 12px; 
+    margin-bottom: 20px; 
+    text-align: center;
+}
+.feedback-input {
+  color:rgb(18, 17, 17);
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 10px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border:1px solid #968f8f;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+.feedback-input:focus { border:2px solid #CC4949; }
+
+[type="submit"] {
+  font-family: "Josefin Sans", sans-serif;
+  width: 60%;
+  background:#CC6666;
+  border-radius:5px;
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-size:10px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+
+[type="submit"]:hover { background:#CC4949; }
+
+/* ////////////////////////////////// */
+
+.bottom{
+    margin-top: 30px;
+    font-family: "Josefin Sans", sans-serif; 
+    
+}
+.follow{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+.follow form{
+    font-family: "GFS Didot", serif;
+    margin-top: 20px;
+}
+
+.top, .middle{
+    border-bottom: 1px solid gray;
+    width: 90%;
+   text-align: center;
+}
+.moremiddle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+}
+/* Icon */
+.social-icon {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+.col-sm-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.social-icon .icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50;
+    left: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.social-icon.facebook .icon {
+    background-image: url('/image/facebook.webp');
+}
+
+.social-icon.instagram .icon {
+    background-image: url('/image/Instagram.webp');
+}
+
+.social-icon.twitter .icon {
+    background-image: url('/image/twitter.webp');
+}
+
+.social-icon:hover::before {
+    opacity: 0.7;
+}
+@media screen and (max-width: 667px) {
+    .social-icon {
+        width: 30px; 
+        height: 30px;
+    }
+    
+    p {
+        font-size: 0.8em;
+    }
+}
+.cart-icon-container {
+  position: relative;
+  display: inline-block; /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
+}
+
+.cart-count {
+  position: absolute;
+  top: -7px; /* ปรับตำแหน่งตามต้องการ */
+  right: -10px; /* ปรับตำแหน่งตามต้องการ */
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 6px;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

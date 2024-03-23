@@ -1,0 +1,171 @@
+.productlist,
+.address {
+    border: 1px solid antiquewhite;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: antiquewhite;
+    overflow-y: auto; /* เพิ่มการเลื่อนสำหรับเนื้อหาที่ยาวเกินไป */
+    width: 100%;
+}
+.table{
+    font-family: "Josefin Sans", sans-serif;
+}
+ 
+.flex-column p {
+    margin-right: 120px;
+}
+.productlist {
+    flex-grow: 1; /* ทำให้ยืดหยุ่นตามข้อมูล */
+}
+ 
+.productlist th {
+    font-size: 1em; /* ปรับขนาดฟอนต์ให้เล็กลง */
+}
+ 
+.productlist p {
+    font-size: 1em; /* ขนาดฟอนต์เริ่มต้น */
+}
+ 
+@media (max-width: 768px) {
+    .productlist p {
+        font-size: 0.8em; /* ปรับขนาดฟอนต์เมื่อหน้าจอย่อลง */
+    }
+}
+ 
+.address {
+    flex-grow: 1; /* ทำให้ยืดหยุ่นตามข้อมูล */
+    font-family: "Josefin Sans", sans-serif;
+    margin-bottom: 5%;
+}
+.backbutton{
+    float: right;
+}
+.paymentbutton{
+    float:right;
+    font-family: "Jockey One", sans-serif;
+}
+ 
+ 
+.summary {
+    width: 230px;
+    height: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 10px;
+    background-color: rgb(205, 202, 202);
+    font-family: "Josefin Sans", sans-serif;  
+    margin-bottom: 5%;
+}
+ 
+@media (max-width: 992px) {
+    .summary {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+ 
+.summary p{
+    font-size: 1em;
+}
+ 
+.card, .list-group-item{
+    background-color: transparent;
+    border: 0;
+}
+.card-body strong{
+    color: red;
+}
+ 
+ 
+/* Step progress bar */
+.stepper-wrapper {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+ 
+.stepper-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+.stepper-item {
+    font-family: "Jockey One", sans-serif;
+}
+.step-name{
+    text-align: center;
+  }
+ 
+.stepper-item::before {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: -50%;
+    z-index: 2;
+}
+ 
+.stepper-item::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 2;
+}
+ 
+.stepper-item .step-counter {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ccc;
+    margin-bottom: 6px;
+}
+ 
+.stepper-item.active {
+    font-weight: bold;
+    font-family: "Jockey One", sans-serif;
+}
+ 
+.stepper-item.active .step-counter {
+    background-color: red;
+    /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16"><path d="M6.97 11.97 3.47 8.47a.25.25 0 0 1 0-.34l.66-.66a.25.25 0 0 1 .35 0L7 10.55l4.52-4.52a.25.25 0 0 1 .35 0l.66.66a.25.25 0 0 1 0 .34L8.53 11.97a.25.25 0 0 1-.36 0z"/></svg>'); */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+}
+ 
+.stepper-item.inactive .step-counter {
+    background-color: #ccc;
+}
+ 
+.stepper-item.inactive::after {
+    position: absolute;
+    content: "";
+    border-bottom: 2px solid #ccc;
+    width: 100%;
+    top: 20px;
+    left: 50%;
+    z-index: 3;
+}
+ 
+.stepper-item:first-child::before {
+    content: none;
+}
+ 
+.stepper-item:last-child::after {
+    content: none;
+}

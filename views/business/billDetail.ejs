@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css2/Business/billDetail.css">
+
+    <%- include('../partials/link')  %>
+</head>
+<body>
+    <%- include('../partials/navBusiness')  %>
+    <section id="feature">
+        <p>BILL DETAILS</p>
+        <div class="bill">
+            <div class="topbillinfo" style="font-size: 0.8em;">
+                <p>Bill #000100</p>
+                <p><span style="color: gray;">Customer</span> <br>ABC <br>10010010000</p>
+                <p><span style="color: gray;">Order :</span> 00350</p>
+                <p>20/01/2024 12.30.00 AM</p>
+            </div>
+            <div class="middlebillinfo">
+                <p style="font-size: 0.9em; margin-left: 15px;">Sale Details</p>
+                <div class="billtable"  style="font-size: 0.8em;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Amount</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mont Fleur Mineral Water 1.5ltr. Pack6</td>
+                                <td>1</td>
+                                <td>฿108.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+            </div>
+            <div class="totalbox" style="font-size: 0.7em;">
+                <p style="margin-left: 10px;">Subtotal: ฿</p>
+                <p style="margin-left: 10px;">Discount: ฿</p>
+                <p style="margin-left: 10px;">Delivery fee: ฿</p>
+                <p style="background-color: red; padding-left: 10px; padding-top: 5px; padding-bottom: 5px;">Total Price: ฿</p>
+    
+            </div>
+        </div>
+    </section>
+</body>
+</html>

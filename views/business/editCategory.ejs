@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Caregory</title>
+
+    <link rel="stylesheet" href="/css2/Business/editCategory.css">
+
+    <%- include('../partials/link')  %>
+</head>
+<body>
+    
+    <%- include('../partials/navBusiness')  %>
+
+    <section class="feature">
+        <div class="categoryinfo">
+            <p>CATEGORY INFORMATION</p>
+            <div class="edit">
+                <form>
+                    Category name: 
+                    <input name="name" type="text" class="feedback-input"/>
+                </form>
+            </div>
+            <div class="savebutton">
+                <button href="/category">SAVE  <i class="fa fa-angle-right"></i></button>
+            </div>  
+        </div>
+       
+    </section>
+    <script src="/connect.js"></script>
+    <script>
+        document.getElementById('saveButton').addEventListener('click', function(event) {
+            event.preventDefault();
+        
+            // ดึงค่าชื่อหมวดหมู่ที่ผู้ใช้กรอกจากฟอร์ม
+            var updatedCategoryName = document.querySelector('input[name="name"]').value;
+        
+            // ส่งข้อมูลไปยังเซิร์ฟเวอร์โดยใช้ AJAX
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/Category', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function () {
+                if (xhr.status == 200) {
+                    console.log('Data added successfully');
+                    // หลังจากเพิ่มข้อมูลสำเร็จ สามารถทำการ redirect หรือแสดงข้อความยืนยันได้ตามต้องการ
+                } else {
+                    console.error('Error adding data:', xhr.statusText);
+                }
+            };
+            xhr.send(JSON.stringify({ category_name: updatedCategoryName }));
+        });
+    </script> 
+
+      <%- include('../partials/script')  %>
+
+
+</body>
+</html>

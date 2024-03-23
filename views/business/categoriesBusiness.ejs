@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Page</title>
+
+    <link rel="stylesheet" href="/css2/Business/categoriesBusiness.css">
+    
+    <%- include('../partials/link')  %>    
+    
+</head>
+
+<body>
+
+    <%- include('../partials/navBusiness')  %>    
+
+    <section id="feature">
+        <div class="allcategory">
+            <div class="row">
+                <div class="col-6 col-sm-6 col-lg-3">
+                    <button class="beverages" style="padding: 0%;" >
+                        <img src="/image/baverage2.jpeg" alt="">
+                        <p>Beverages</p>
+                        <div class="editbutton">
+                            <span style="color: white;"><b>Edit</b><i class="fa fa-angle-right"></i></span>
+                        </div>
+                        <div class="deletebutton">
+                            <span style="color: white;"><b>Delete</b><i class="fa fa-angle-right"></i></span>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-6 col-sm-6 col-lg-3">
+                    <button class="fruits" style="padding: 0%;">
+                        <img src="/image/fruit.jpeg" alt="">
+                        <p>Fruits And <br>Vegetables</p>
+                        <div class="editbutton">
+                            <span style="color: white;"><b>Edit</b><i class="fa fa-angle-right"></i></span>
+                        </div>
+                        <div class="deletebutton">
+                            <span style="color: white;"><b>Delete</b><i class="fa fa-angle-right"></i></span>
+                        </div>
+                    </button>
+                </div>
+                <div class="col-6 col-sm-6 col-lg-3">
+                    <button class="household" style="padding: 0%;">
+                        <img src="/image/household.jpeg" alt="">
+                        <p>Household</p>
+                        <div class="editbutton">
+                            <span style="color: white;"><b>Edit</b><i class="fa fa-angle-right"></i></span>
+                        </div>
+                        <div class="deletebutton">
+                            <span style="color: white;"><b>Delete</b><i class="fa fa-angle-right"></i></span>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="col-6 col-sm-6 col-lg-3">
+                    <button class="meat" style="padding: 0%;">
+                        <img src="/image/meat.png" alt="">
+                        <p>Meat And <br>Seafood</p>
+                        <div class="editbutton">
+                            <span style="color: white;"><b>Edit</b><i class="fa fa-angle-right"></i></span>
+                        </div>
+                        <div class="deletebutton">
+                            <span style="color: white;"><b>Delete</b><i class="fa fa-angle-right"></i></span>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="col-6 col-sm-6 col-lg-3">
+                    <div class="addnew">
+                        <div class="addnewicon" >
+                            <a href="/html2/Business/editCategory.html">
+                                <img src="/image/addnewicon.png" alt="">
+                                <a>
+                        </div>
+                        <p style="color: rgb(162, 161, 161);">Add new category</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // ฟังก์ชันสำหรับดึงข้อมูลหมวดหมู่จากฐานข้อมูล
+        function fetchCategories() {
+            fetch('/category')
+                .then(response => response.json())
+                .then(categories => {
+                    // อัปเดตแอตทริบิวต์ data-category-id ของปุ่ม .addnewicon ด้วย category_ID ที่ได้จากฐานข้อมูล
+                    updateCategoryId(categories[0].category_ID); // ตัวอย่างเฉพาะ คุณอาจต้องปรับเพื่อให้เหมาะสมกับการใช้งานของคุณ
+                })
+                .catch(error => console.error('Error:', error));
+        }
+ 
+        // เรียกใช้ฟังก์ชัน fetchCategories เมื่อหน้าเว็บโหลดเสร็จสิ้น
+        window.onload = fetchCategories;
+ 
+        // ฟังก์ชันสำหรับอัปเดตแอตทริบิวต์ data-category-id ของ .addnewicon
+        function updateCategoryId(categoryId) {
+            var addNewIcon = document.querySelector('.addnewicon');
+            addNewIcon.setAttribute('data-category-id', categoryId);
+        }
+        // อัปเดตการติดต่อกับเหตุการณ์คลิก (click event) สำหรับปุ่มหมวดหมู่เพื่ออัปเดตแอตทริบิวต์ data-category-id ด้วย
+        document.querySelector('.beverages').addEventListener('click', function () {
+            updateCategoryId(4);
+            window.location.href = "/productCategory?category_ID=4";
+        });
+        document.querySelector('.fruits').addEventListener('click', function () {
+            updateCategoryId(5);
+            window.location.href = "/productCategory?category_ID=5";
+        });
+        document.querySelector('.household').addEventListener('click', function () {
+            updateCategoryId(6);
+            window.location.href = "/productCategory?category_ID=6";
+        });
+        document.querySelector('.meat').addEventListener('click', function () {
+            updateCategoryId(7);
+            window.location.href = "/productCategory?category_ID=7";
+        });
+ 
+ 
+        // เพิ่มการติดต่อกับเหตุการณ์คลิก (click event) สำหรับ .addnewicon
+        document.querySelector('.addnewicon').addEventListener('click', function (event) {
+            // ป้องกันการทำงานเริ่มต้นของลิงค์
+            event.preventDefault();
+ 
+            // รับค่า category_ID จากแอตทริบิวต์ data-category-id
+            var categoryId = this.getAttribute('data-category-id');
+ 
+            // เปลี่ยนหน้าไปยัง editCategory.html พร้อมกับส่ง category_ID เป็นพารามิเตอร์ใน URL
+            window.location.href = "/edit?category_ID=" + categoryId;
+        });
+ 
+ 
+    </script>
+      <%- include('../partials/script')  %>  
+      <script src="/controllers/app.js"></script>
+
+</body>
+</html>

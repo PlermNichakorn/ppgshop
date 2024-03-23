@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product in category</title>
+ 
+    <link rel="stylesheet" href="/css2/Business/productInCategory.css" />
+ 
+    <%- include('../partials/link')  %>
+  </head>
+ 
+  <body>
+    <%- include('../partials/navBusiness')  %>
+    <section id="feature">
+      <div class="addnewbox">
+        <div  onclick="redirectToProductInCategory()">
+          <img src="/image/addnewicon.png" alt="" />
+        </div>
+        <p style="color: gray">Add new product</p>
+      </div>
+ 
+      <div class="confirmbox" style="display: none">
+        <p>Do you want to delete this product?</p>
+        <div class="continuebutton">
+          <a href="#" style="color: rgb(255, 255, 255)"><b>Continue</b></a>
+        </div>
+        <div class="canclebutton">
+          <a href="#" style="color: rgb(255, 252, 252)"><b>Cancle</b></a>
+        </div>
+      </div>
+    </section>
+ 
+    <section id="feature">
+      <div id="productList"></div>
+      <!-- Other elements -->
+    </section>
+ 
+    <script src="/Business/app.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // ดึง category_ID จาก URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryID = urlParams.get("category_ID");
+ 
+        // เรียก API ที่มีการกรองตาม category_ID
+        fetch(`http://localhost:3003/product/${categoryID}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            displayProducts(data); // แสดงสินค้าที่ได้รับมา
+          })
+          .catch((error) => console.error("Error:", error));
+      });
+ 
+      function displayProducts(products) {
+    const productList = document.getElementById("productList");
+    // Clear the container
+    while (productList.firstChild) {
+        productList.removeChild(productList.firstChild);
+    }
+ 
+    products.forEach((product) => {
+        // Create a new div for each product
+        const productDiv = document.createElement("div");
+        productDiv.className = "productbox";
+        // Add product_ID as a data attribute
+        productDiv.dataset.productId = product.product_ID;
+ 
+        // Add product details to the div
+        productDiv.innerHTML = `
+        <div class="row" style ="margin: 5% ;">
+                <div class="col-3 col-sm-3 col-lg-3">
+                    <div class="productimage">
+                        <img src="${product.imagesrc || "default-image-url"}" class="img-fluid rounded-3" style="width: 120px;" alt="picture">
+                    </div>
+                </div>
+                <div class="col-9 col-sm-9 col-lg-9">
+                    <div class="productinfo">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-lg-12">
+                                <span style="display: flex; flex-direction: row; gap: 5px">Name: <p id="name${product.product_ID}">${product.product_Name}</p></span>
+                            </div>
+                            <div class="col-12 col-sm-12 col-lg-12" id="name-form${product.product_ID}"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-lg-12">
+                                <span style="display: flex; flex-direction: row; gap: 5px">Price: <p id="price${product.product_ID}">${product.price}</p></span>
+                            </div>
+                            <div class="col-12 col-sm-12 col-lg-12" id="price-form${product.product_ID}"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-lg-12">
+                                <span style="display: flex; flex-direction: row; gap: 5px">Promotion: <p id="promotion${product.product_ID}">${product.promotion}</p></span>
+                            </div>
+                            <div class="col-12 col-sm-12 col-lg-12" id="promotion-form${product.product_ID}"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-lg-12">
+                                <span style="display: flex; flex-direction: row; gap: 5px">Description: <p id="description${product.product_ID}">${product.description}</p></span>
+                            </div>
+                            <div class="col-12 col-sm-12 col-lg-12" id="description-form${product.product_ID}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="editbutton">
+                <p style="color: red;" id="edit-button-${product.product_ID}" onclick="editProduct(${product.product_ID})">Edit</p>
+            </div>
+            <div class="savebutton" style="display: none" id="save-button-${product.product_ID}">
+                <a href="#" onclick="saveProduct(${product.product_ID})">SAVE</a>
+            </div>
+            <div class="deletebutton">
+                <a href="#" style="color: red;" onclick="deleteProduct(${product.product_ID})">Delete</a>
+            </div>
+        `;
+        // Append the new div to the productList container
+        productList.appendChild(productDiv);
+    });
+}
+ 
+      function editProduct(id) {
+        // ดึงข้อมูลจาก <p> และเก็บไว้ในตัวแปร
+        var name = document.getElementById(`name${id}`).textContent;
+        var price = document.getElementById(`price${id}`).textContent;
+        var promotion = document.getElementById(`promotion${id}`).textContent;
+        var description = document.getElementById(
+          `description${id}`
+        ).textContent;
+ 
+        document.getElementById(`name${id}`).style.display = `none`;
+        document.getElementById(`price${id}`).style.display = `none`;
+        document.getElementById(`promotion${id}`).style.display = `none`;
+        document.getElementById(`description${id}`).style.display = `none`;
+ 
+        document.getElementById(`name-form${id}`).style.display = `block`;
+        document.getElementById(`price-form${id}`).style.display = `block`;
+        document.getElementById(`promotion-form${id}`).style.display = `block`;
+        document.getElementById(
+          `description-form${id}`
+        ).style.display = `block`;
+ 
+        // เปลี่ยน <p> เป็น input เพื่อให้ผู้ใช้แก้ไข
+        document.getElementById(
+          `name-form${id}`
+        ).innerHTML = `<input type="text" id="name-field${id}" value="${name}">`;
+        document.getElementById(
+          `price-form${id}`
+        ).innerHTML = `<input type="text" id="price-field${id}" value="${price}">`;
+        document.getElementById(
+          `promotion-form${id}`
+        ).innerHTML = `<input type="text" id="promotion-field${id}" value="${promotion}">`;
+        document.getElementById(
+          `description-form${id}`
+        ).innerHTML = `<input type="text" id="description-field${id}" value="${description}">`;
+ 
+       // ซ่อนปุ่ม "Edit"
+    document.getElementById(`edit-button-${id}`).style.display = "none";
+ 
+ // แสดงปุ่ม "Save" ที่เฉพาะเจาะจง
+ document.querySelector(`#save-button-${id}`).style.display = "block";
+      }
+ 
+      function saveProduct(id) {
+        // ดึงค่าจาก input และเก็บไว้ในตัวแปร
+        var name = document.getElementById(`name-field${id}`).value;
+        var price = document.getElementById(`price-field${id}`).value;
+        var promotion = document.getElementById(`promotion-field${id}`).value;
+        var description = document.getElementById(
+          `description-field${id}`
+        ).value;
+ 
+        const productData = {
+          productName: name,
+          price: Number(price),
+          promotion: promotion,
+          description: description,
+        };
+ 
+        console.log("productData:: ", productData);
+ 
+        // Send a PUT request to the server
+        fetch(`http://localhost:3003/product/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(productData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            // Handle the error, e.g., show an error message
+          });
+ 
+        document.getElementById(`name-form${id}`).style.display = `none`;
+        document.getElementById(`price-form${id}`).style.display = `none`;
+        document.getElementById(`promotion-form${id}`).style.display = `none`;
+        document.getElementById(`description-form${id}`).style.display = `none`;
+ 
+        document.getElementById(`name${id}`).style.display = `block`;
+        document.getElementById(`price${id}`).style.display = `block`;
+        document.getElementById(`promotion${id}`).style.display = `block`;
+        document.getElementById(`description${id}`).style.display = `block`;
+ 
+        // แสดงข้อมูลที่แก้ไขแล้วใน <p>
+        document.getElementById(`name${id}`).innerHTML = name;
+        document.getElementById(`price${id}`).innerHTML = Number(price);
+        document.getElementById(`promotion${id}`).innerHTML = promotion;
+        document.getElementById(`description${id}`).innerHTML = description;
+ 
+      // ซ่อนปุ่ม "Save"
+    document.querySelector(`#save-button-${id}`).style.display = "none";
+ 
+ // แสดงปุ่ม "Edit" อีกครั้ง
+ document.getElementById(`edit-button-${id}`).style.display = "block";
+      }
+ 
+      function deleteProduct(id) {
+        // ส่งคำขอ DELETE ไปยัง server โดยใช้ id ของสินค้า
+        fetch(`http://localhost:3003/product/${id}`, {
+          method: "DELETE", // ใช้ method DELETE สำหรับการลบ
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Product deleted successfully:", data);
+            // ลบสินค้าออกจากหน้าเว็บ
+            const productDiv = document.querySelector(
+              `.productbox[data-product-id="${id}"]`
+            );
+            if (productDiv) {
+              productDiv.remove();
+            }
+          })
+          .catch((error) => {
+            console.error("Error deleting product:", error);
+          });
+      }
+ 
+      function redirectToProductInCategory() {
+    // Extract category_ID from the current URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryID = urlParams.get("category_ID");
+ 
+    // Construct the URL for the productInCategory page with the category_ID
+    const productInCategoryUrl = `http://localhost:3003/productInfo?category_ID=${categoryID}`;
+ 
+    // Redirect the user to the productInCategory page
+    window.location.href = productInCategoryUrl;
+}
+ 
+    </script>
+    <%- include('../partials/script')  %>
+  </body>
+</html>

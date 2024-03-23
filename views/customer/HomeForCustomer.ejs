@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+ 
+ 
+    <link rel="stylesheet" href="/css2/cssForHomeForCus.css">
+    <title>Home Page</title>
+ 
+    <%- include('../partials/link') %>
+</head>
+ 
+<body>
+ 
+    <%- include('../partials/navigator') %>
+ 
+ 
+    <!-- Head -->
+    <section id="HeadForPromote">
+        <div class="container-fluid" style="padding: 0% 0% 0% 0%;">
+            <div class="top">
+                <div class="row align-items-center">
+                    <div class="col" style="padding: 0%;">
+                        <blockquote>
+                            <p class="TextForHead">A great Place For Grocerty Product</p>
+                            <p class="TextForHeadPri">The Fruits, Vegetables, Drink, Household, And Others</p>
+                            <p class="TextForHeadPri">Provide you to easy to cooking delicious food</p>
+                        </blockquote>
+                    </div>
+                    <div class="col" style="padding: 0%;">
+                        <img src="/image/LittleBoy.png" alt="LittleBoy" class="LittleBoy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Popular Products Carousel -->
+    <section id="HomePageForCustomer">
+        <div class="container" style="padding: auto;">
+            <div class="col-md-3 text-center" style="margin: 5% 0% 0% 5%;">
+                <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;">
+                    <blockquote>OUR POPULAR PRODUCTS</blockquote>
+                </p>
+            </div>
+            <div id="carouselExample" class="carousel slide vertical">
+                <div class="carousel-inner">
+                    <!-- Carousel items will be dynamically added here -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+ 
+        <div class="container">
+            <div class="col-md-3 text-center" style="margin: 5% 0% 0% 0%;">
+                <p style="margin: 0% 25% 0% 0%; padding: 0% 0% 4% 0%;">
+                    <blockquote>NEW PRODUCTS</blockquote>
+                </p>
+            </div>
+            <div id="boxesCarousel1" class="carousel slide vertical" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Carousel items will be dynamically added here -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#boxesCarousel1"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#boxesCarousel1"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- Custom JS -->
+    <script>
+        // Function to fetch and display popular products
+        async function fetchPopularProducts() {
+            try {
+                const response = await fetch('/product-popular');
+                const products = await response.json();
+                const carouselInner = document.querySelector('#carouselExample .carousel-inner');
+ 
+                // Group products into sets of 4
+                const groupedProducts = [];
+                for (let i = 0; i < products.length; i += 4) {
+                    groupedProducts.push(products.slice(i, i + 4));
+                }
+ 
+                groupedProducts.forEach((group, index) => {
+                    const carouselItem = document.createElement('div');
+                    carouselItem.classList.add('carousel-item');
+                    if (index === 0) {
+                        carouselItem.classList.add('active'); // Add 'active' class to the first item
+                    }
+ 
+                    // Create the HTML for each product in the group
+                    const productHtml = group.map(product => `
+                        <div class="col-md-3">
+                            <div class="rectangle2 mx-auto">
+                                <div onClick="redirectToProductInfo(${product.product_ID})" class="box">
+                                    <div class="img-container">
+                                        <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
+                                    </div>
+                                    <div class="descript">
+                                        <p><blockquote style="text-align:center;">${product.product_Name}</blockquote></p>
+                                    </div>
+                                    <div class="cartButton">
+                                        <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
+                                        <button onClick="addToCart(${product.product_ID})" class="cart">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+ 
+                    // Wrap each group of products in its own carousel structure
+                    carouselItem.innerHTML = `
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                ${productHtml}
+                            </div>
+                        </div>
+                    `;
+ 
+                    carouselInner.appendChild(carouselItem);
+                });
+            } catch (error) {
+                console.error('Error fetching popular products:', error);
+            }
+        }
+ 
+        // Function to fetch and display new products
+        async function fetchNewProducts() {
+            try {
+                const response = await fetch('/product-new');
+                const products = await response.json();
+                const carouselInner = document.querySelector('#boxesCarousel1 .carousel-inner');
+ 
+                // Group products into sets of 4
+                const groupedProducts = [];
+                for (let i = 0; i < products.length; i += 4) {
+                    groupedProducts.push(products.slice(i, i + 4));
+                }
+ 
+                groupedProducts.forEach((group, index) => {
+                    const carouselItem = document.createElement('div');
+                    carouselItem.classList.add('carousel-item');
+                    if (index === 0) {
+                        carouselItem.classList.add('active'); // Add 'active' class to the first item
+                    }
+ 
+                    // Create the HTML for each product in the group
+                    const productHtml = group.map(product => `
+                        <div class="col-md-3">
+                            <div class="rectangle2 mx-auto">
+                                <div onClick="redirectToProductInfo(${product.product_ID})" class="box">
+                                    <div class="img-container">
+                                        <img class="imageFoecate" src="${product.imagesrc}" alt="${product.product_Name}">
+                                    </div>
+                                    <div class="descript">
+                                        <p><blockquote style="text-align:center;">${product.product_Name}</blockquote></p>
+                                    </div>
+                                    <div class="cartButton">
+                                        <p><span style="color: red; margin-left: 4%;">฿${product.price}</span></p>
+                                        <button onClick="addToCart(${product.product_ID})" class="cart">ADD TO CART</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+ 
+                    // Wrap each group of products in its own carousel structure
+                    carouselItem.innerHTML = `
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                ${productHtml}
+                            </div>
+                        </div>
+                    `;
+ 
+                    carouselInner.appendChild(carouselItem);
+                });
+            } catch (error) {
+                console.error('Error fetching new products:', error);
+            }
+        }
+ 
+        // Call the functions to fetch and display products
+        fetchPopularProducts();
+        fetchNewProducts();
+ 
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+        // Usage
+        let userId = getCookie('user_id');
+ 
+        function addToCart(productId) {
+            // ตรวจสอบว่าสินค้านี้มีอยู่ในตะกร้าหรือไม่
+            console.log(`Product ID: ${productId} added to cart.`);
+ 
+            const productData = {
+                product_id: Number(productId),
+                user_id: Number(userId),
+                amount: 1
+            };
+ 
+            fetch(`http://localhost:3003/cart`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(productData)
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("Success product:", data);
+                    updateCartCount(); // อัปเดตจำนวนสินค้าในตะกร้า
+                })
+                .catch((error) => {
+                    console.log("Error:", error);
+                });
+        }
+ 
+        function updateCartCount() {
+            fetch(`http://localhost:3003/cart/${userId}`, {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log("Success cart:", data);
+                    const cartCountElement = document.querySelector('.cart-count');
+                    cartCountElement.textContent = data.length;
+                })
+                .catch((error) => {
+                    console.error("Error:", error);
+                });
+        }
+ 
+        function redirectToProductInfo(product_ID) {
+            // Construct the URL for the productInCategory page with the product_ID
+            const productInCategoryUrl = `/information?product_ID=${product_ID}`;
+ 
+            // Redirect the user to the productInCategory page
+            window.location.href = productInCategoryUrl;
+        }
+    </script>
+ 
+ 
+    <%- include('../partials/footer') %>
+ 
+    <%- include('../partials/script') %>
+ 
+ 
+ 
+</body>
+ 
+</html>
+ 

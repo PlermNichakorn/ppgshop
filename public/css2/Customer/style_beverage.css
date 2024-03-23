@@ -1,0 +1,359 @@
+body {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  max-height: 100vh;
+ 
+}
+ 
+.list-unstyled.custom-list li a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+ 
+.carousel-container {
+  margin: 50px;
+  padding-top: 20px;
+}
+ 
+#carouselExample ,#boxesCarousel ,#boxesCarousel2{
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  max-height: 400px;
+  position: relative;
+}
+.carousel-item{
+  width: 100%;
+  flex: 0 0 auto;
+  /* border-radius: 20px; */
+}
+ 
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-sizing: border-box;
+  object-position: center center;
+ 
+}
+ 
+h1{
+  font-family: "Mansalva",sans-serif;
+  text-align: center;
+  padding-top: 80px;
+}
+ 
+#footer {
+  background-color: #818181;
+  color: white;
+  font-size: 16px;
+  width: 100%;
+}
+.line {
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30px;
+  margin-right: 30px;
+ 
+}
+ 
+.line p {
+  font-family: "Jockey One", sans-serif;
+  font-size: 20px;
+  margin: 0 30px;
+}
+ 
+@media (max-width: 767px) {
+.line {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.line p {
+  text-align: center;
+}
+#carouselExample{
+    border-radius: 0;
+}
+ 
+.carousel-container {
+    margin: 20px;
+}
+.carousel-item img{
+  height: 200px;
+}
+ 
+ 
+}
+ 
+hr {
+  flex: 1;
+  height: 5px;
+  background-color: red;
+}
+ 
+.box{
+  background-color: antiquewhite;
+  height: 340px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  box-shadow: 5px 5px 15px rgba(4, 4, 4, 0.262);
+  display: block;
+}
+ 
+#box-container, #box-container2{
+  margin-bottom: 50px;
+}
+ 
+.img-container {
+  text-align: center;
+  display: block;
+  margin: auto;
+}
+ 
+.imageFoecate {
+  object-fit: cover;
+  width: 50%;
+  height: auto;
+  margin:auto;
+  padding-top: 5%;
+  display: inline-block;
+  object-fit: cover;
+}
+ 
+@media screen and (max-width: 768px) {
+  .imageFoecate {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    padding-top: 5%;
+    display: inline-block;
+    object-fit: cover;
+    margin-top: 5%;
+  }
+}
+ 
+  .descript {
+    padding: 0% 10% 0% 10%;
+    margin-bottom: 0%;
+    margin: auto;
+    font-family: "Josefin Sans", sans-serif;
+    text-align: center;
+  }
+ 
+.cartButton .cart{
+  margin-bottom: 4%;
+}
+ 
+.cart {
+  font-size: 14px;
+  background-color: red;
+  padding: 6px 20px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  display: block;
+  margin: 0 auto;
+  margin-top: -10px;
+}
+/* footer */
+#footer {
+  background-color: #818181;
+  color: white;
+  font-size: 16px;
+  margin-bottom: 0%;
+}
+.list-unstyled.custom-list li a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+ 
+/**/
+.pagination {
+  display: inline-block;
+}
+ 
+.pagination li {
+  display: inline;
+  margin: 0 5px;
+}
+ 
+.pagination li a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+ 
+.pagination li a:hover {
+  background-color: #ddd;
+}
+ 
+.pagination .active a {
+  background-color: #145124;
+  color: white;
+}
+ 
+#pagination {
+  display: flex;
+  justify-content: center;
+}
+ 
+ 
+.cart-icon-container {
+  position: relative;
+  display: inline-block; /* เพื่อให้สามารถกำหนดตำแหน่งของ .cart-count ให้กับตำแหน่งของ cart-icon-container */
+}
+ 
+.cart-count {
+  position: absolute;
+  top: -7px; /* ปรับตำแหน่งตามต้องการ */
+  right: -10px; /* ปรับตำแหน่งตามต้องการ */
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 6px;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ 
+@media screen and (max-width: 768px) {
+/* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+.box {
+height: 280px; /* ปรับความสูงให้เล็กลง */
+width: 180px;
+border-radius: 10px; /* ลดขนาดของขอบ */
+}
+ 
+.imageFoecate {
+width: 80%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+height: 120px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+}
+ 
+.descript p , span {
+font-size: 14px; /* ปรับขนาดข้อความให้เล็กลง */
+margin:auto; /* ปรับระยะห่างของข้อความ */
+margin-top: 10%;
+}
+.cart {
+    font-size: 10px;
+    /* ลดขนาดของปุ่มเมื่อหน้าจอเล็กลง */
+    padding: 6px 12px;
+    margin-top: -5px;
+}
+ 
+.cart:hover {
+  background-color: #6e7174;
+}
+}
+ 
+@media screen and (max-width: 420px) {
+/* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+.box {
+height: 250px; /* ปรับความสูงให้เล็กลง */
+width: 150px;
+border-radius: 10px; /* ลดขนาดของขอบ */
+}
+ 
+.imageFoecate {
+width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+}
+ 
+.descript p ,span {
+font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
+margin:auto; /* ปรับระยะห่างของข้อความ */
+margin-top: 10%;
+}
+ 
+p {
+margin-bottom: 0%;
+margin-top: 5%;
+}
+.cart {
+font-size: 10px; /* ปรับขนาดของปุ่มให้เล็กลง */
+padding: 6px 12px; /* ปรับขนาดของปุ่มให้เล็กลง */
+margin-top: 0%; /* ปรับระยะห่างของปุ่ม */
+}
+#productList {
+margin-right: 5%;
+}
+}
+ 
+@media screen and (max-width: 420px) {
+  /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+  .box {
+  height: 250px; /* ปรับความสูงให้เล็กลง */
+  width: 150px;
+  border-radius: 10px; /* ลดขนาดของขอบ */
+  }
+ 
+  .imageFoecate {
+  width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+  height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+  }
+ 
+  .descript p ,span {
+  font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
+  margin:auto; /* ปรับระยะห่างของข้อความ */
+  margin-top: 5%;
+  }
+ 
+  p {
+  margin-bottom: 0%;
+  margin-top: 5%;
+  }
+  .cart {
+  font-size: 10px; /* ปรับขนาดของปุ่มให้เล็กลง */
+  padding: 6px 12px; /* ปรับขนาดของปุ่มให้เล็กลง */
+  margin-top: 0%; /* ปรับระยะห่างของปุ่ม */
+  }
+  #productList {
+  margin-right: 5%;
+  }
+  }
+ 
+  @media screen and (max-width: 340px) {
+    /* กำหนดขนาดของกล่องสี่เหลี่ยมและองค์ประกอบภายในเมื่อหน้าจอเล็กลง */
+    .box {
+    height: 230px; /* ปรับความสูงให้เล็กลง */
+    width: 130px;
+    border-radius: 10px; /* ลดขนาดของขอบ */
+    }
+   
+    .imageFoecate {
+    width: 60%; /* ปรับขนาดของรูปภาพให้เล็กลง */
+    height: 100px; /* ปรับความสูงของรูปภาพให้เล็กลง */
+    }
+   
+    .descript p ,span {
+    font-size: 10px; /* ปรับขนาดข้อความให้เล็กลง */
+    margin:auto; /* ปรับระยะห่างของข้อความ */
+    margin-top: 5%;
+    }
+   
+    p {
+    margin-bottom: 0%;
+    margin-top: 5%;
+    }
+    .cart {
+    font-size: 10px; /* ปรับขนาดของปุ่มให้เล็กลง */
+    padding: 6px 12px; /* ปรับขนาดของปุ่มให้เล็กลง */
+    margin-top: 0%; /* ปรับระยะห่างของปุ่ม */
+    }
+    #productList {
+    margin-right: 5%;
+    }
+    }

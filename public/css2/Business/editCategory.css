@@ -1,0 +1,46 @@
+.feature{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 130px;
+}
+.categoryinfo{
+    width: 60%;
+    background-color: antiquewhite;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px; 
+    border-radius: 5px; 
+    font-family: "Josefin Sans", sans-serif;
+}
+.edit{
+    margin-top: 50px;
+    margin-left: 30px;
+    
+}
+.savebutton{
+    margin-top: 70px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;     
+}
+.savebutton button{
+    padding: 5px 50px;
+    border-radius: 5px;
+    color: rgb(26, 25, 25);
+    background-color: rgb(160, 156, 156);
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    border: 1px solid gray;
+}
+.savebutton button:hover {
+    background-color: orange; /* เปลี่ยนพื้นหลังเป็นสีส้มเมื่อโฮเวอร์ */
+    color: white; /* เปลี่ยนสีตัวอักษรเป็นสีขาวเมื่อโฮเวอร์ */
+}
+
+.feedback-input{
+    width: 40%;
+    margin-left: 10px;   
+}

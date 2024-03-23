@@ -1,0 +1,117 @@
+#feature{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+.productinfo{
+    width: 80%;
+    background-color: antiquewhite;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative;
+    padding-right: 70px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 1em;
+    border-radius: 15px;
+}
+.rightinput{
+   margin-left: 0px;
+}
+.row {
+    margin-bottom: 2.5%;
+}
+#productname input{
+    width: 50%;
+    margin-left: 0px;
+    margin-bottom: 15px;
+}
+#price input{
+    margin-left: 60px;
+}
+.rightinputprice input{
+    width: 15%;
+}
+#promotion, #description{
+    margin-bottom: 15px;
+}
+#choosePictureBox{
+    width: 250px;
+    height: 180px;
+    border: 1px solid gray;
+    background-color: rgba(235, 225, 225, 0.561);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Jockey One", sans-serif;
+    color: gray;
+    font-size: 1em;
+    margin-top: 3%;
+}
+#choosePictureBox a{
+    text-align: center;
+}
+#previewImage{
+    max-width: 70%;
+    max-height: 70%;
+}
+.feedback-input  {
+    border-radius: 7px ;
+    border: 2px solid gray;
+}
+
+.savebutton {
+    margin-top: 30px;
+    margin-left: 40%;
+    border-radius: 10px;
+    padding: 10px 50px; /* เพิ่มความสูงให้ปุ่มเพื่อให้มันมีความสูงที่เพียงพอสำหรับข้อความ */
+    color: rgb(26, 25, 25);
+    /* background-color: rgb(160, 156, 156); */
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+  .savebutton button{
+    padding: 5px 50px;
+    border-radius: 5px;
+    color: rgb(26, 25, 25);
+    
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    border: 1px solid gray;
+}
+.savebutton button:hover {
+    background-color: orange; /* เปลี่ยนพื้นหลังเป็นสีส้มเมื่อโฮเวอร์ */
+    color: white; /* เปลี่ยนสีตัวอักษรเป็นสีขาวเมื่อโฮเวอร์ */
+}
+@media (max-width: 667px) {
+    #price input{
+        margin-left: 0px;
+        width: 40%;
+    }
+    #info{
+        font-size: 0.9em;
+    }
+    .productinfo{
+        font-size: 0.6em;
+       
+    }
+    .classifier label{
+        font-size: 0.2em;
+    }
+    #choosePictureBox a{
+        width: 70%;
+    }
+    #choosePictureBox p{
+        font-size: 1.5em;
+    }
+    .savebutton{
+        text-align: center;
+        margin-left: 20px;
+    }
+}
